@@ -14,5 +14,8 @@
 <h2>Add a comment:</h2>
 <%= render 'comments/form' %>
 
-<td><%= link_to 'Edit', edit_article_path(@article) %></td>
+
+<%= link_to(edit_article_path(@article)) do %>
+  <i class="fa fa-pencil-square"></i>
+<% end %>
 <%= link_to 'Back', articles_path %>
