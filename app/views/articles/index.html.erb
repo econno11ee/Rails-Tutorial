@@ -1,21 +1,51 @@
-<h1>Listing articles</h1>
 <%= link_to 'New article', new_article_path %>
+<!-- Page Header -->
+<!-- Set your background image for this header on the line below. -->
+<header class="intro-header" style="background-image: url('https://raw.githubusercontent.com/BlackrockDigital/startbootstrap-clean-blog/master/img/about-bg.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="site-heading">
+                    <h1>Erin's Rails Blog</h1>
+                    <hr class="small">
+                    <span class="subheading">A Rip Off of Bootstrap Clean Blog by Erin</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<body>
 <table>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-  </tr>
+      <!-- Main Content -->
+      <div class="container">
+        <% @articles.each do |article| %>
+          <div class="row">
+              <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                  <div class="post-preview">
+                      <%= link_to(article_path(article)) do %>
+                          <h2 class="post-title">
+                              <%= article.title %>
+                          </h2>
+                          <h3 class="post-subtitle">
+                              <%= article.text %>
+                          </h3>
+                      <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> on September 24, 2014</>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+                      <% end %>
 
-  <% @articles.each do |article| %>
-    <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article) %></td>
-      <td><%= link_to 'Edit', edit_article_path(article) %></td>
-      <td><%= link_to 'Destroy', article_path(article),
-              method: :delete,
-              data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
+            </div>
+                  <!-- Pager -->
+                  <ul class="pager">
+                      <li class="next">
+                          <a href="#">Older Posts &rarr;</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+
 </table>
 <%= link_to 'New User', new_user_path %>
